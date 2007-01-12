@@ -1,8 +1,16 @@
 <?
 $CONFIG['target'] = array(
-	1=>'pal-vcd',
-	2=>'pal-svcd',
-	3=>'pal-dvd',
+	1=>'vcd',
+	2=>'svcd',
+	3=>'dvd',
+	4=>'dv',
+	5=>'dv50',
+);
+
+$CONFIG['targettype'] = array(
+	1=>'pal',
+	2=>'ntsc',
+	3=>'film',
 );
 
 $CONFIG['vcodec'] = array(

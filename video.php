@@ -26,7 +26,8 @@ if (isset($_REQUEST['submit'])) {
 	$acodec = escapeshellcmd($CONFIG['acodec'][$_REQUEST['acodec']]);
 	$extension = escapeshellcmd($CONFIG['extension'][$vcodec]);
 	$target = escapeshellcmd($CONFIG['target'][$_REQUEST['target']]);
-		
+	$targettype = escapeshellcmd($CONFIG['targettype'][$_REQUEST['targettype']]);
+	
 	$sourcefile = 'upload/'.$HTTP_POST_FILES['upload']['name'];
 	copy($HTTP_POST_FILES['upload']['tmp_name'], $sourcefile);
 	
@@ -34,7 +35,7 @@ if (isset($_REQUEST['submit'])) {
 		$extension = escapeshellcmd($CONFIG['extension'][$target]);
 		$targetfile = 'download/'.$HTTP_POST_FILES['upload']['name'].$extension;
 		echo "Transcoding file to $targetfile\n";
-		$command = "ffmpeg -y -i ".escapeshellarg($sourcefile)." -target $target ".escapeshellarg($targetfile);
+		$command = "ffmpeg -y -i ".escapeshellarg($sourcefile)." -target {$targettype}-{$target} ".escapeshellarg($targetfile);
 	} else {
 		$targetfile = 'download/'.$HTTP_POST_FILES['upload']['name'].$extension;
 		echo "Transcoding file to $targetfile\n";
@@ -62,6 +63,13 @@ if (isset($_REQUEST['submit'])) {
 				<option value="1">VCD</option>
 				<option value="2">SVCD</option>
 				<option value="3">DVD</option>
+				<option value="4">DV</option>
+				<option value="5">DV50</option>
+			  </select>
+			  <select name="targettype">
+				<option value="1">PAL</option>
+				<option value="2">NTSC</option>
+				<option value="3">FILM</option>
 			  </select>
 			</td>
 		<tr>
