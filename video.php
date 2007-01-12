@@ -51,6 +51,53 @@ if (isset($_REQUEST['submit'])) {
 }
 ?>
 
+<script type="text/javascript">
+	var template = new Array();
+	template[1] = new Array();
+	template[2] = new Array();
+	template[3] = new Array();
+
+	template[1]['vcodec'] = 4;
+	template[1]['acodec'] = 0;
+	template[1]['ac'] = 0;
+	template[1]['width'] = 352;
+	template[1]['height'] = 188;
+	template[1]['b'] = 1150;
+	template[1]['ar'] = 44100;
+	template[1]['ab'] = 128;
+	
+	template[2]['vcodec'] = 3;
+	template[2]['acodec'] = 4;
+	template[2]['ac'] = 1;
+	template[2]['width'] = 176;
+	template[2]['height'] = 144;
+	template[2]['b'] = 128;
+	template[2]['ar'] = 8000;
+	template[2]['ab'] = 16;
+
+	template[3]['vcodec'] = 2;
+	template[3]['acodec'] = 5;
+	template[3]['ac'] = 0;
+	template[3]['width'] = 352;
+	template[3]['height'] = 288;
+	template[3]['b'] = 1150;
+	template[3]['ar'] = 44800;
+	template[3]['ab'] = 128;
+
+	function getTemplate(id) {
+		document.getElementById('acodec').selectedIndex = template[id]['acodec'];
+		document.getElementById('vcodec').selectedIndex = template[id]['vcodec'];
+		document.getElementById('ac').selectedIndex = template[id]['ac'];
+		
+		document.getElementById('width').value = 	template[id]['width'];
+		document.getElementById('height').value = 	template[id]['height'];
+		document.getElementById('b').value = 	template[id]['b'];
+		document.getElementById('ar').value = 	template[id]['ar'];
+		document.getElementById('ab').value = 	template[id]['ab'];
+	}
+
+</script>
+
 <form name="submit_file" action="video.php" method="post" enctype="multipart/form-data">
 	<table>
 		<tr>
@@ -76,14 +123,23 @@ if (isset($_REQUEST['submit'])) {
 			<th colspan="4">Zielformat selber bestimmen (Expertenfunktion)</th>
 		</tr>
 		<tr>
+			<td>Vorlage verwenden</td>
+			<td colspan="3"><select onChange="getTemplate(this.selectedIndex);">
+				<option value="">Wähle Vorlage</option>
+				<option value="0">Shockwave Flash</option>
+				<option value="1">3gp</option>
+				<option value="2">MP4</option>
+			</select>
+		</tr>
+		<tr>
 			<td>Breite</td>
-			<td><input type="text" name="width" value="352"/></td>
+			<td><input type="text" name="width" id="width" value="352"/></td>
 			<td>H&ouml;he</td>
-			<td><input type="text" name="height" value="288"/></td>
+			<td><input type="text" name="height" id="height" value="288"/></td>
 		</tr>
 		<tr>
 			<td>Videocodec</td>
-			<td><select name="vcodec">
+			<td><select name="vcodec" id="vcodec">
 					<option value="1">MPEG 1</option>
 					<option value="2">MPEG 2</option>
 					<option value="3">MPEG 4</option>
@@ -91,7 +147,7 @@ if (isset($_REQUEST['submit'])) {
 					<option value="5">FLV</option>
 			    </select></td>
 			<td>Audiocodec</td>
-			<td><select name="acodec">
+			<td><select name="acodec" id="acodec">
 					<option value="1">MP3</option>
 					<option value="2">AC3</option>
 					<option value="3">PCM</option>
@@ -103,22 +159,24 @@ if (isset($_REQUEST['submit'])) {
 		</tr>
 		<tr>
 			<td>Videobitrate (kb)</td>
-			<td><input type="text" name="b" value="1150"/></td>
+			<td><input type="text" name="b" id="b" value="1150"/></td>
 			<td>Audiobitrate (kb)</td>
-			<td><input type="text" name="ab" value="128"/></td>
+			<td><input type="text" name="ab" id="ab" value="128"/></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td></td>
 			<td>Samplingfrequenz</td>
-			<td><input type="text" name="ar" value="44100"/></td>
+			<td><input type="text" name="ar" id="ar" value="44100"/></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td></td>
 			<td>Kan&auml;le</td>
-			<td><input type="radio" value="2" name="ac" checked="checked"/> stereo
-			    <input type="radio" value="1" name="ac"/> mono
+			<td><select name="ac" id="ac">
+					<option value="2">stereo</option>
+					<option value="1">mono</option>
+				</select>
 			</td>
 		</tr>
 		<tr>
