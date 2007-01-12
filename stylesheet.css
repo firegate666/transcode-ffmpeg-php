@@ -16,9 +16,16 @@ a:hover {
 input, select {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 0.8em;
+	background-color: #ebf3e3;
 }
 
 th {
-	background-color: #AAA;
-	color: #FFF;
+	background-color: #5c9c17;
+	color: #fff;
+	font-weight: bold;
+}
+
+td {
+	background-color: #ebf3e3;
+	color: #000;
 }

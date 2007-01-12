@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
 	</head>
 <body>
-
+<h3>MediaTranscoder - Video</h3>
 <?php
 include './config.inc.php';
 if (isset($_REQUEST['submit'])) {
@@ -196,6 +196,6 @@ if (isset($_REQUEST['submit'])) {
 	</table>
 </form>
 <hr/>
-<p><a href="index.php">Zurück zur Startseite</a></p>
+<p><a href="index.php">Zurück zur Startseite</a> - <a href="audio.php">Audiotranskodierung/-extraktion</a></p>
 </body>
 </html>

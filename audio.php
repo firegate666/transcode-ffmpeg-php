@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="stylesheet.css"/>
 	</head>
 <body>
+<h3>MediaTranscoder - Audio</h3>
 <pre>
 <?php
 if (isset($_REQUEST['submit'])) {
@@ -51,6 +52,6 @@ if (isset($_REQUEST['submit'])) {
 	</table>
 </form>
 <hr/>
-<p><a href="index.php">Zurück zur Startseite</a></p>
+<p><a href="index.php">Zurück zur Startseite</a> - <a href="video.php">Videotranskodierung</a></p>
 </body>
 </html>
